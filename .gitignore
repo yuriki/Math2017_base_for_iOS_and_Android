@@ -3,7 +3,15 @@
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
+iOS_Builds/
+UnityPackageManager/
 Assets/AssetStoreTools*
+Assets/Plugins*
+Assets/Editor Default Resources*
+Assets/Fonts*
+Assets/JSON*
+Assets/Sounds*
+Assets/Sprites*
 
 # Visual Studio cache directory
 .vs/
@@ -35,3 +43,25 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Images
+*.psd
+*.png
+*.jpg
+
+# Sounds
+*.wav
+*.mp3
+
+# DataAssets
+Assets/Data/States/WrongAnswers.asset
+Assets/Data/Money/Amount_USA.asset
+Assets/Data/Money/Amount_UK.asset
+Assets/Data/Money/Amount_UA.asset
+Assets/Data/Money/Amount_Time.asset
+Assets/Data/Money/Amount_RU.asset
+Assets/Data/Money/Amount_EU.asset
+Assets/Data/Money/Amount_Bitcoin.asset
+
+# Misc
+.DS_Store
