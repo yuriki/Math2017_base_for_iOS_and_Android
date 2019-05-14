@@ -110,16 +110,16 @@ public class PressButton : MonoBehaviour
 		WobbleUsersInputDigit();
 	}
 
-
+	private bool activeNumerator = true;
 	private bool IsNumeratorActive(int pressedDigit)
 	{
 		//TODO make check what is active (numerator or denominator)
 		
 		if (pressedDigit == 0)
 		{
-
+			activeNumerator = !activeNumerator;
 		}
-		return true;
+		return activeNumerator;
 	}
 
 
