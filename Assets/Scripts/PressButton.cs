@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,33 +19,55 @@ public class PressButton : MonoBehaviour
 
 	[Header("States")]
 	public NonRangedStateData correctAnswer;
+	public FractionStateDate fractionCorrectAnswer;
 	public StateData digitsNumber;
 
 	Text userInputText;
+	FractionsViewer userInputFraction;
 
 	Vector3 scale = new Vector3 (0.6f,0.6f,0f);
 	float time = 0.2f;
 
 	string tmpInputString;
 	int correctAnswerLength;
+	Fractions fractionCorrectAnswerLength;
 
 	private void Start()
 	{
-		userInputText = userInputTextObj.GetComponent<Text>();
+		if (IsThisFractionExample())
+		{
+			userInputFraction = userInputFractionObj.GetComponent<FractionsViewer>();
+		}
+		else
+		{
+			userInputText = userInputTextObj.GetComponent<Text>();
+		}
+		
 	}
 
 
 	public void PressDigit(int userInputDigit)
 	{
 		HideRedCross();
-		correctAnswerLength = correctAnswer.Value.ToString().Length;
 
 		if (IsThisFractionExample())
 		{
+			fractionCorrectAnswerLength = new Fractions(fractionCorrectAnswer.frValue.numerator.ToString().Length, fractionCorrectAnswer.frValue.denominator.ToString().Length);
 
+			if (IsNumeratorActive(userInputDigit))
+			{
+				userInputFraction.Numerator.text = userInputDigit.ToString();
+			}
+			else
+			{
+				userInputFraction.Denominator.text = userInputDigit.ToString();
+			}
+			
 		}
 		else
 		{
+			correctAnswerLength = correctAnswer.Value.ToString().Length;
+
 			if (userInputText.text == "")
 			{
 				userInputText.text = userInputDigit.ToString();
@@ -85,6 +108,18 @@ public class PressButton : MonoBehaviour
 		}
 
 		WobbleUsersInputDigit();
+	}
+
+
+	private bool IsNumeratorActive(int pressedDigit)
+	{
+		//TODO make check what is active (numerator or denominator)
+		
+		if (pressedDigit == 0)
+		{
+
+		}
+		return true;
 	}
 
 

@@ -879,7 +879,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.42552114}
-  m_AnchoredPosition: {x: 62.249023, y: 548.1046}
+  m_AnchoredPosition: {x: 62.249023, y: 548.10455}
   m_SizeDelta: {x: -122.50195, y: 548.056}
   m_Pivot: {x: 0.49999994, y: 1.0000001}
 --- !u!1001 &256878735
@@ -6408,6 +6408,8 @@ MonoBehaviour:
   questionMarkGreen: {fileID: 2123901754}
   invisible: {fileID: 1595505190}
   correctAnswer: {fileID: 11400000, guid: 180d473f7c926a14f88f716fc661c63c, type: 2}
+  fractionCorrectAnswer: {fileID: 11400000, guid: 489b1ed9b9c2fc34a9ab6314ffc2bf6c,
+    type: 2}
   digitsNumber: {fileID: 11400000, guid: 509fc41eec3e56249b4a819889653c79, type: 2}
 --- !u!114 &1535636764
 MonoBehaviour:
