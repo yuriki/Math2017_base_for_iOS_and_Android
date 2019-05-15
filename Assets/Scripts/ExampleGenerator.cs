@@ -20,6 +20,8 @@ public class ExampleGenerator : MonoBehaviour
 
 	[Header("Text")]
 	public Text inputResultText;
+	public FractionsViewer fractionOne;
+	public FractionsViewer fractionTwo;
 	public Text mathExamp;
 	public Text invisible;
 	public Text questionMarkRed;
@@ -111,15 +113,17 @@ public class ExampleGenerator : MonoBehaviour
 	private void GenerateFractionExample()
 	{
 		RearrangeFractionExample();
-		Fractions fraction1 = new Fractions(1, 3);
-		Fractions fraction2 = new Fractions(2, 3);
+		Fractions fraction1 = new Fractions(UnityEngine.Random.Range(1,10), UnityEngine.Random.Range(2, 6));
+		Fractions fraction2 = new Fractions(UnityEngine.Random.Range(1, 10), UnityEngine.Random.Range(2, 6));
 
-		Fractions result = new Fractions(0,1);
+		fractionCorrectAnswer.frValue = fraction1 + fraction2;
+		fractionOne.Numerator.text = fraction1.numerator.ToString();
+		fractionOne.Denominator.text = fraction1.denominator.ToString();
 
-		result = fraction1 + fraction2;
-		fractionCorrectAnswer.frValue = result;
-		Debug.LogFormat("Some fraction = {0}/{1}", result.numerator, result.denominator);
+		fractionTwo.Numerator.text = fraction2.numerator.ToString();
+		fractionTwo.Denominator.text = fraction2.denominator.ToString();
 	}
+
 
 
 	private void RearrangeFractionExample()
