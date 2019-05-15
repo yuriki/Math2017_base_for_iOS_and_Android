@@ -9,7 +9,7 @@ public class IphoneXAdaptationAdmin : MonoBehaviour
 
 	void Start()
 	{
-		if (cam.pixelHeight == 2436 && cam.pixelWidth == 1125)
+		if ((cam.pixelHeight == 2436 && cam.pixelWidth == 1125) || (cam.pixelHeight == 1792 && cam.pixelWidth == 828) || (cam.pixelHeight == 2688 && cam.pixelWidth == 1242))
 		{
 			Vector2 ofs = BtnHolder.offsetMax;
 			ofs.y -= 95;
