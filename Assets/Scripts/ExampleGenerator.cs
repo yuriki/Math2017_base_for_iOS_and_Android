@@ -9,6 +9,7 @@ public class ExampleGenerator : MonoBehaviour
 	[Header("States")]
 	public StateData exampleSwitch;
 	public NonRangedStateData correctAnswer;
+	public FractionStateDate fractionCorrectAnswer;
 	public StateData maxDigitsInUserInput;
 	public BoolData isHardExamplesOnly;
 
@@ -116,6 +117,7 @@ public class ExampleGenerator : MonoBehaviour
 		Fractions result = new Fractions(0,1);
 
 		result = fraction1 + fraction2;
+		fractionCorrectAnswer.frValue = result;
 		Debug.LogFormat("Some fraction = {0}/{1}", result.numerator, result.denominator);
 	}
 

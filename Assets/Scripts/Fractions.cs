@@ -28,4 +28,28 @@ public struct Fractions
 		
 		return result;
 	}
+
+	public static bool operator == (Fractions fr1, Fractions fr2)
+	{
+		if (fr1.denominator == fr2.denominator & fr1.numerator == fr2.numerator)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public static bool operator != (Fractions fr1, Fractions fr2)
+	{
+		if (fr1.denominator == fr2.denominator & fr1.numerator == fr2.numerator)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
 }

@@ -6187,6 +6187,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exampleSwitch: {fileID: 11400000, guid: 9d0ed0dd3f99b45488caf3132ac003f3, type: 2}
   correctAnswer: {fileID: 11400000, guid: 180d473f7c926a14f88f716fc661c63c, type: 2}
+  fractionCorrectAnswer: {fileID: 11400000, guid: f55ad576f8e68cf4d95e831b560faeb5,
+    type: 2}
   maxDigitsInUserInput: {fileID: 11400000, guid: 509fc41eec3e56249b4a819889653c79,
     type: 2}
   isHardExamplesOnly: {fileID: 11400000, guid: 2c63d32d9e3e51643b0d0d47a2d736c0, type: 2}

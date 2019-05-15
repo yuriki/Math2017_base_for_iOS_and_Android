@@ -19,7 +19,6 @@ public class PressButton : MonoBehaviour
 
 	[Header("States")]
 	public NonRangedStateData correctAnswer;
-	public FractionStateDate fractionCorrectAnswer;
 	public StateData digitsNumber;
 
 	Text userInputText;
@@ -31,6 +30,7 @@ public class PressButton : MonoBehaviour
 	string tmpInputString;
 	int correctAnswerLength;
 	Fractions fractionCorrectAnswerLength;
+	FractionStateDate fractionCorrectAnswer;
 
 	private void Start()
 	{
@@ -48,10 +48,11 @@ public class PressButton : MonoBehaviour
 
 	public void PressDigit(int userInputDigit)
 	{
-		HideRedCross();
+		
 
 		if (IsThisFractionExample())
 		{
+			fractionCorrectAnswer = this.GetComponent<ExampleGenerator>().fractionCorrectAnswer;
 			fractionCorrectAnswerLength = new Fractions(fractionCorrectAnswer.frValue.numerator.ToString().Length, fractionCorrectAnswer.frValue.denominator.ToString().Length);
 
 			if (IsNumeratorActive(userInputDigit))
@@ -66,6 +67,8 @@ public class PressButton : MonoBehaviour
 		}
 		else
 		{
+			HideRedCross();
+
 			correctAnswerLength = correctAnswer.Value.ToString().Length;
 
 			if (userInputText.text == "")
@@ -193,19 +196,26 @@ public class PressButton : MonoBehaviour
 
 	public void PressCheck()
 	{
-		flipDigitsToggle.interactable = false;
-
-		if (HasUserInputSomethingAppropriate())
+		if (IsThisFractionExample())
 		{
 			this.GetComponent<Check>().CheckResult();
-			invisible.text = "";
 		}
 		else
 		{
-			sound.Play();
-			iTween.PunchScale(questionMarkRed, iTween.Hash(
-				"amount", new Vector3(0.5f, 0.5f, 0f),
-				"time", 0.5f));
+			flipDigitsToggle.interactable = false;
+
+			if (HasUserInputSomethingAppropriate())
+			{
+				this.GetComponent<Check>().CheckResult();
+				invisible.text = "";
+			}
+			else
+			{
+				sound.Play();
+				iTween.PunchScale(questionMarkRed, iTween.Hash(
+					"amount", new Vector3(0.5f, 0.5f, 0f),
+					"time", 0.5f));
+			} 
 		}
 	}
 
