@@ -31,6 +31,7 @@ public class ExampleGenerator : MonoBehaviour
 	[Header("Objects to hide/show")]
 	public GameObject flipDigitsToggle;
 	public GameObject fractionExample;
+	public GameObject fractionImageToggleButton;
 
 	[Header("Destination places")]
 	public Transform userBottom;
@@ -128,6 +129,7 @@ public class ExampleGenerator : MonoBehaviour
 
 	private void RearrangeFractionExample()
 	{
+		fractionImageToggleButton.transform.parent.gameObject.SetActive(true);
 		questionMark.SetActive(false);
 		mathExamp.text = "";
 		fractionExample.SetActive(true);

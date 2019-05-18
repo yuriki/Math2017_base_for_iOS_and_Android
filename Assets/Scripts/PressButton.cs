@@ -5,6 +5,7 @@ using UnityEngine.UI;
 [RequireComponent (typeof(StretchRect))]
 public class PressButton : MonoBehaviour
 {
+	#region Public_Variables
 	public AudioSource sound;
 	public Toggle flipDigitsToggle;
 
@@ -21,6 +22,12 @@ public class PressButton : MonoBehaviour
 	public NonRangedStateData correctAnswer;
 	public StateData digitsNumber;
 
+	[Header("Sprites")]
+	public Sprite numerator;
+	public Sprite denominator;
+	#endregion
+
+	#region Private_Variables
 	Text userInputText;
 	FractionsViewer userInputFraction;
 
@@ -31,6 +38,7 @@ public class PressButton : MonoBehaviour
 	int correctAnswerLength;
 	Fractions fractionCorrectAnswerLength;
 	FractionStateDate fractionCorrectAnswer;
+	#endregion
 
 	private void Start()
 	{
@@ -45,17 +53,47 @@ public class PressButton : MonoBehaviour
 		
 	}
 
+	Color numeratorColor;
+	Color denominatorColor;
+	private void ChangeFractionColor(float numeratorTranparency, float denominatorTransparency)
+	{
+		numeratorColor = userInputFraction.Numerator.color;
+		numeratorColor.a = numeratorTranparency;
+		userInputFraction.Numerator.color = numeratorColor;
+
+		denominatorColor = userInputFraction.Denominator.color;
+		denominatorColor.a = denominatorTransparency;
+		userInputFraction.Denominator.color = denominatorColor;
+	}
+
+	private bool activeNumerator = true;
+	public void PressFractionToggle()
+	{
+		if (activeNumerator)
+		{
+			this.GetComponent<ExampleGenerator>().fractionImageToggleButton.GetComponent<Image>().sprite = denominator;
+			WobbleObject(userInputFraction.gameObject.transform.Find("FractionDenominator").gameObject);
+			ChangeFractionColor(0.5f, 1f);
+		}
+		else
+		{
+			this.GetComponent<ExampleGenerator>().fractionImageToggleButton.GetComponent<Image>().sprite = numerator;
+			WobbleObject(userInputFraction.gameObject.transform.Find("FractionNumerator").gameObject);
+			ChangeFractionColor(1f, 0.5f);
+		}
+		activeNumerator = !activeNumerator;
+	}
 
 	public void PressDigit(int userInputDigit)
 	{
-		
+		HideRedCross();
 
 		if (IsThisFractionExample())
 		{
 			fractionCorrectAnswer = this.GetComponent<ExampleGenerator>().fractionCorrectAnswer;
 			fractionCorrectAnswerLength = new Fractions(fractionCorrectAnswer.frValue.numerator.ToString().Length, fractionCorrectAnswer.frValue.denominator.ToString().Length);
 
-			if (IsNumeratorActive(userInputDigit))
+			if (IsNumeratorActive())
 			{
 				userInputFraction.Numerator.text = userInputDigit.ToString();
 			}
@@ -67,8 +105,6 @@ public class PressButton : MonoBehaviour
 		}
 		else
 		{
-			HideRedCross();
-
 			correctAnswerLength = correctAnswer.Value.ToString().Length;
 
 			if (userInputText.text == "")
@@ -108,20 +144,13 @@ public class PressButton : MonoBehaviour
 
 				FlipDigitsActivationToggle();
 			}
+			WobbleUsersInputDigit();
 		}
-
-		WobbleUsersInputDigit();
 	}
 
-	private bool activeNumerator = true;
-	private bool IsNumeratorActive(int pressedDigit)
-	{
-		//TODO make check what is active (numerator or denominator)
-		
-		if (pressedDigit == 0)
-		{
-			activeNumerator = !activeNumerator;
-		}
+	
+	private bool IsNumeratorActive()
+	{	
 		return activeNumerator;
 	}
 
@@ -131,7 +160,15 @@ public class PressButton : MonoBehaviour
 		if (this.GetComponent<OnWrongAnswer>().crossHolder.activeInHierarchy)
 		{
 			this.GetComponent<OnWrongAnswer>().crossHolder.SetActive(false);
-			userInputText.text = "";
+			if (IsThisFractionExample())
+			{
+				userInputFraction.Denominator.text = "?";
+				userInputFraction.Numerator.text = "?";
+			}
+			else
+			{
+				userInputText.text = "";
+			}
 		}
 	}
 
@@ -198,7 +235,16 @@ public class PressButton : MonoBehaviour
 	{
 		if (IsThisFractionExample())
 		{
-			this.GetComponent<Check>().CheckResult();
+			if (HasUserFractionInputSomethingAppropriate())
+			{
+				this.GetComponent<Check>().CheckResult();
+			}
+			else
+			{
+				sound.Play();
+				WobbleObject(userInputFraction.gameObject);
+			}
+			
 		}
 		else
 		{
@@ -225,10 +271,20 @@ public class PressButton : MonoBehaviour
 		return userInputText.text != "" && !this.GetComponent<OnWrongAnswer>().crossHolder.activeInHierarchy;
 	}
 
+	bool HasUserFractionInputSomethingAppropriate()
+	{
+		return userInputFraction.Numerator.text != "?" && userInputFraction.Denominator.text != "?" && !this.GetComponent<OnWrongAnswer>().crossHolder.activeInHierarchy;
+	}
+
 
 	void WobbleUsersInputDigit ()
 	{
 		iTween.PunchScale(userInputTextObj, scale, time);	
+	}
+
+	void WobbleObject(GameObject obj)
+	{
+		iTween.PunchScale(obj, scale, time);
 	}
 
 
