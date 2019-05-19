@@ -84,6 +84,8 @@ public class PressButton : MonoBehaviour
 		activeNumerator = !activeNumerator;
 	}
 
+	Text activeUserFractionInput;
+	int activeCorrectAnswerLength;
 	public void PressDigit(int userInputDigit)
 	{
 		HideRedCross();
@@ -95,11 +97,23 @@ public class PressButton : MonoBehaviour
 
 			if (IsNumeratorActive())
 			{
-				userInputFraction.Numerator.text = userInputDigit.ToString();
+				activeUserFractionInput = userInputFraction.Numerator;
+				activeCorrectAnswerLength = fractionCorrectAnswerLength.numerator;
 			}
 			else
 			{
-				userInputFraction.Denominator.text = userInputDigit.ToString();
+				activeUserFractionInput = userInputFraction.Denominator;
+				activeCorrectAnswerLength = fractionCorrectAnswerLength.denominator;
+			}
+
+			if (activeUserFractionInput.text == "?" || activeUserFractionInput.text == "")
+			{
+				activeUserFractionInput.text = userInputDigit.ToString();
+			}
+			else if (activeUserFractionInput.text.Length < activeCorrectAnswerLength)
+			{
+				tmpInputString = activeUserFractionInput.text;
+				activeUserFractionInput.text = tmpInputString + userInputDigit.ToString();
 			}
 			
 		}
