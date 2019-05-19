@@ -30,7 +30,7 @@ public class Check : MonoBehaviour
 				wrongAnswersNum.ApplyChange(1);
 
 			//reset user's input
-			typedFraction = new Fractions(0,1); 
+			typedFraction = new Fractions(0,-1);
 		}
 		else
 		{

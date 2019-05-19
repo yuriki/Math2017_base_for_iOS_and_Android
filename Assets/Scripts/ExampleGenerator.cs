@@ -133,6 +133,8 @@ public class ExampleGenerator : MonoBehaviour
 		questionMark.SetActive(false);
 		mathExamp.text = "";
 		fractionExample.SetActive(true);
+		this.GetComponent<PressButton>().userInputFractionObj.GetComponent<FractionsViewer>().Numerator.text = "?";
+		this.GetComponent<PressButton>().userInputFractionObj.GetComponent<FractionsViewer>().Denominator.text = "?";
 	}
 
 

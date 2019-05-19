@@ -53,6 +53,7 @@ public class PressButton : MonoBehaviour
 		
 	}
 
+
 	Color numeratorColor;
 	Color denominatorColor;
 	private void ChangeFractionColor(float numeratorTranparency, float denominatorTransparency)
@@ -65,6 +66,7 @@ public class PressButton : MonoBehaviour
 		denominatorColor.a = denominatorTransparency;
 		userInputFraction.Denominator.color = denominatorColor;
 	}
+
 
 	private bool activeNumerator = true;
 	public void PressFractionToggle()
@@ -83,6 +85,7 @@ public class PressButton : MonoBehaviour
 		}
 		activeNumerator = !activeNumerator;
 	}
+
 
 	Text activeUserFractionInput;
 	int activeCorrectAnswerLength;
