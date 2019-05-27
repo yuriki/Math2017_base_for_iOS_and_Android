@@ -192,52 +192,81 @@ public class PressButton : MonoBehaviour
 
 	public void PressDelete()
 	{
-		tmpInputString = userInputText.text;
-		int digitsNum = tmpInputString.Length;
-
-		if (IsRedCrossHidden())
+		if (IsThisFractionExample())
 		{
-			if (digitsNum == 1)
+			if (IsNumeratorActive())
 			{
-				userInputText.text = tmpInputString.Remove(digitsNum - 1);
-				questionMarkGreen.text = "?";
-				invisible.text = "";
+				activeUserFractionInput = userInputFraction.Numerator;
 			}
-			else if (digitsNum != 0)
+			else
 			{
-				//if this is Column example I changing order of removing digits
-				if (IsThisColumnExample())
+				activeUserFractionInput = userInputFraction.Denominator;
+			}
+			int numDigits = activeUserFractionInput.text.Length;
+
+			if (IsRedCrossHidden())
+			{
+				if (numDigits == 1)
 				{
-					userInputText.text = tmpInputString.Remove(0, 1);
-
-					//show faint question mark if length of correct answer longer than user input but not less than 1 
-					//(because I show green question mark when user input is empty)
-					if (correctAnswerLength > 1 && correctAnswerLength > userInputText.text.Length)
-					{
-						invisible.text = "<color=#DCDF71FF>?</color>" + "<color=#FFFFFF00>" + userInputText.text + "</color>";
-					}
-
-					FlipDigitsActivationToggle();
+					activeUserFractionInput.text = "?";
 				}
-				else
+				else if (numDigits != 0)
 				{
-					userInputText.text = tmpInputString.Remove(digitsNum - 1);
-
-					//show faint question mark if length of correct answer longer than user input but not less than 1 
-					//(because I show green question mark when user input is empty)
-					if (correctAnswerLength > 1 && correctAnswerLength > userInputText.text.Length)
-						invisible.text = "<color=#FFFFFF00>" + userInputText.text + "</color>" + "<color=#DCDF71FF>?</color>";
+					activeUserFractionInput.text = activeUserFractionInput.text.Remove(numDigits - 1);
+					//WobbleObject();
 				}
+			}
 
-				WobbleUsersInputDigit();
-			} 
 		}
 		else
 		{
-			this.GetComponent<OnWrongAnswer>().crossHolder.SetActive(false);
-			userInputText.text = "";
-			questionMarkGreen.text = "?";
-			invisible.text = "";
+			tmpInputString = userInputText.text;
+			int digitsNum = tmpInputString.Length;
+
+			if (IsRedCrossHidden())
+			{
+				if (digitsNum == 1)
+				{
+					userInputText.text = tmpInputString.Remove(digitsNum - 1);
+					questionMarkGreen.text = "?";
+					invisible.text = "";
+				}
+				else if (digitsNum != 0)
+				{
+					//if this is Column example I changing order of removing digits
+					if (IsThisColumnExample())
+					{
+						userInputText.text = tmpInputString.Remove(0, 1);
+
+						//show faint question mark if length of correct answer longer than user input but not less than 1 
+						//(because I show green question mark when user input is empty)
+						if (correctAnswerLength > 1 && correctAnswerLength > userInputText.text.Length)
+						{
+							invisible.text = "<color=#DCDF71FF>?</color>" + "<color=#FFFFFF00>" + userInputText.text + "</color>";
+						}
+
+						FlipDigitsActivationToggle();
+					}
+					else
+					{
+						userInputText.text = tmpInputString.Remove(digitsNum - 1);
+
+						//show faint question mark if length of correct answer longer than user input but not less than 1 
+						//(because I show green question mark when user input is empty)
+						if (correctAnswerLength > 1 && correctAnswerLength > userInputText.text.Length)
+							invisible.text = "<color=#FFFFFF00>" + userInputText.text + "</color>" + "<color=#DCDF71FF>?</color>";
+					}
+
+					WobbleUsersInputDigit();
+				}
+			}
+			else
+			{
+				this.GetComponent<OnWrongAnswer>().crossHolder.SetActive(false);
+				userInputText.text = "";
+				questionMarkGreen.text = "?";
+				invisible.text = "";
+			} 
 		}
 	}
 
