@@ -73,13 +73,13 @@ public class PressButton : MonoBehaviour
 	{
 		if (activeNumerator)
 		{
-			this.GetComponent<ExampleGenerator>().fractionImageToggleButton.GetComponent<Image>().sprite = denominator;
+			this.GetComponent<ExampleGenerator>().fractionImageToggleButton.GetComponent<Image>().sprite = numerator;
 			WobbleObject(userInputFraction.gameObject.transform.Find("FractionDenominator").gameObject);
 			ChangeFractionColor(0.5f, 1f);
 		}
 		else
 		{
-			this.GetComponent<ExampleGenerator>().fractionImageToggleButton.GetComponent<Image>().sprite = numerator;
+			this.GetComponent<ExampleGenerator>().fractionImageToggleButton.GetComponent<Image>().sprite = denominator;
 			WobbleObject(userInputFraction.gameObject.transform.Find("FractionNumerator").gameObject);
 			ChangeFractionColor(1f, 0.5f);
 		}

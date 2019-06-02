@@ -1154,7 +1154,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 87253dc49875c184f83522977d58140b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5a192170d75192d40a0aa480ae0bffa5, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3812,7 +3812,7 @@ Prefab:
     - target: {fileID: 224371254720681004, guid: 4f64b6b920c927e498f97a4c8302acb6,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0.18
+      value: 0.17999268
       objectReference: {fileID: 0}
     - target: {fileID: 224371254720681004, guid: 4f64b6b920c927e498f97a4c8302acb6,
         type: 2}
@@ -6706,6 +6706,7 @@ MonoBehaviour:
   exitButton: {fileID: 1044871601}
   usersInput: {fileID: 2041043242}
   mathExample: {fileID: 2084318134}
+  fractionExample: {fileID: 27467797}
 --- !u!114 &1535636757
 MonoBehaviour:
   m_ObjectHideFlags: 0
