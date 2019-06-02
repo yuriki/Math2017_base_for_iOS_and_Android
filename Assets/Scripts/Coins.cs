@@ -191,7 +191,12 @@ public class Coins : MonoBehaviour
 
 		//paying money for each coin
 		Money money = this.GetComponent<Money>();
-		money.PayAndPrint(money.moneyArray.CurrencyAmounts[money.currencyID.Value].RewardsArray[this.GetComponent<ExampleGenerator>().exampleSwitch.Value]);
+		int exampleSwitch = this.GetComponent<ExampleGenerator>().exampleSwitch.Value;
+		if (exampleSwitch == 3)
+		{
+			exampleSwitch = 0;
+		}
+		money.PayAndPrint(money.moneyArray.CurrencyAmounts[money.currencyID.Value].RewardsArray[exampleSwitch]);
 	}
 
 
