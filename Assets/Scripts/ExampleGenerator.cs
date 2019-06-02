@@ -114,8 +114,10 @@ public class ExampleGenerator : MonoBehaviour
 	private void GenerateFractionExample()
 	{
 		RearrangeFractionExample();
-		Fractions fraction1 = new Fractions(UnityEngine.Random.Range(1,10), UnityEngine.Random.Range(2, 6));
-		Fractions fraction2 = new Fractions(UnityEngine.Random.Range(1, 10), UnityEngine.Random.Range(2, 6));
+		int denominator1Random = UnityEngine.Random.Range(2, 6);
+		Fractions fraction1 = new Fractions(UnityEngine.Random.Range(1, denominator1Random), denominator1Random);
+		int denominator2Random = UnityEngine.Random.Range(2, 6);
+		Fractions fraction2 = new Fractions(UnityEngine.Random.Range(1, denominator2Random), denominator2Random);
 
 		fractionCorrectAnswer.frValue = fraction1 + fraction2;
 		fractionOne.Numerator.text = fraction1.numerator.ToString();
