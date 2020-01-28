@@ -8,6 +8,9 @@ public class LoadCreateSaveLocally : MonoBehaviour
 	public StateData currencyID;
 	public StringData appPath;
 	public BoolData isHardExamplesOnly;
+	public BoolData isMultiplicationTableON;
+	public BoolData isExampleInColumnON;
+	public BoolData isExampleTo10ON;
 
 	public BoolData firstLoad;
 	
@@ -36,9 +39,16 @@ public class LoadCreateSaveLocally : MonoBehaviour
 
 			ResetEveryCurrencyAmount();
 			CreateOrLoadAmountOfEveryCurrency();
-
-			isHardExamplesOnly.toggle = false; //for the first time app shows all examples
+			
+			//for the first time app shows all examples
+			isHardExamplesOnly.toggle = false; 
 			LoadOrCreateJSONLocally(disableSimpleExamples_FileName, isHardExamplesOnly);
+			isMultiplicationTableON.toggle = true;
+			LoadOrCreateJSONLocally(isMultiplicationTableON.name, isMultiplicationTableON);
+			isExampleInColumnON.toggle = true;
+			LoadOrCreateJSONLocally(isExampleInColumnON.name, isExampleInColumnON);
+			isExampleTo10ON.toggle = true;
+			LoadOrCreateJSONLocally(isExampleTo10ON.name, isExampleTo10ON);
 
 			firstLoad.toggle = false;
 		}

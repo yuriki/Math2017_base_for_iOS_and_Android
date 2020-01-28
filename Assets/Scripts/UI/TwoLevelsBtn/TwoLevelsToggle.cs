@@ -6,6 +6,7 @@ public class TwoLevelsToggle : MonoBehaviour
 {
 	public StateData exampleSwitch;
 	public BoolData isHardExamplesOnly;
+	public BoolData isThisExampleON;
 	public GameObject SecondLevelTogglesHolder;
 	public GameObject[] otherButtons;
 	public GameObject[] otherButtonsPos;
@@ -29,6 +30,10 @@ public class TwoLevelsToggle : MonoBehaviour
 	{
 		label = this.transform.Find("Label").GetComponent<Text>();
 		label.text = exampleType.buttonName;
+		if (!isThisExampleON.toggle)
+		{
+			this.gameObject.transform.parent.gameObject.SetActive(false);
+		}
 	}
 
 
@@ -62,7 +67,10 @@ public class TwoLevelsToggle : MonoBehaviour
 			for (int i = 0; i < otherButtons.Length; i++)
 			{
 				//making button NONinteractable (because someone can push two or more buttons together with two or more fingers)
-				otherButtons[i].GetComponentInChildren<Button>().interactable = false;
+				if (this.gameObject.activeInHierarchy == true)
+				{
+					otherButtons[i].GetComponentInChildren<Button>().interactable = false;
+				}
 
 				direction = Vector3.Normalize(otherButtons[i].transform.position - this.transform.position);
 

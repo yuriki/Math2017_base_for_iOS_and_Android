@@ -177,7 +177,7 @@ public class ExampleGenerator : MonoBehaviour
 					MoveUserInputMarker(userTopMiddle);
 					MoveRightSideOfRectTransform(mathExamp.gameObject.GetComponent<RectTransform>(), 128);
 
-					//fix for error 0+?=10 (because I don't have enough space for TOW digit answer)
+					//fix for next type of example 0+?=10 (because I don't have enough space for TOW digit answer)
 					if (generated1 == 0 && signInt == 1)
 					{
 						maxDigitsInUserInput.Value = 2;

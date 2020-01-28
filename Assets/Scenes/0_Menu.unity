@@ -584,7 +584,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041D\u0430\u043B\u0430\u0448\u0442\u0443\u0432\u0430\u043D\u043D\u044F"
+  m_Text: Settings
 --- !u!222 &17442585
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1071,6 +1071,12 @@ Prefab:
       propertyPath: m_Color.b
       value: 0.7137255
       objectReference: {fileID: 0}
+    - target: {fileID: 114825380127997896, guid: 60742df959de25e4bbb00e8cf52fde57,
+        type: 2}
+      propertyPath: isThisExampleON
+      value: 
+      objectReference: {fileID: 11400000, guid: 496f23ba9d2eb4343a44be63f09da1df,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60742df959de25e4bbb00e8cf52fde57, type: 2}
   m_IsPrefabParent: 0
@@ -3185,6 +3191,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1460792151930648, guid: 60742df959de25e4bbb00e8cf52fde57, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114825380127997896, guid: 60742df959de25e4bbb00e8cf52fde57,
+        type: 2}
+      propertyPath: isThisExampleON
+      value: 
+      objectReference: {fileID: 11400000, guid: 9db0e8708707d064eaeb622b9353e364,
+        type: 2}
+    - target: {fileID: 114790336776039924, guid: 60742df959de25e4bbb00e8cf52fde57,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906297006077694, guid: 60742df959de25e4bbb00e8cf52fde57,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114790336776039924, guid: 60742df959de25e4bbb00e8cf52fde57,
+        type: 2}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6099,6 +6126,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114825380127997896, guid: 60742df959de25e4bbb00e8cf52fde57,
+        type: 2}
+      propertyPath: isThisExampleON
+      value: 
+      objectReference: {fileID: 11400000, guid: 90dff6bef8f0eaa4fb1e26a7bd0e3813,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60742df959de25e4bbb00e8cf52fde57, type: 2}
   m_IsPrefabParent: 0
@@ -6641,7 +6674,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0414\u043B\u044F \u0431\u0430\u0442\u044C\u043Ai\u0432"
+  m_Text: For parents
 --- !u!222 &1493880625
 CanvasRenderer:
   m_ObjectHideFlags: 0
